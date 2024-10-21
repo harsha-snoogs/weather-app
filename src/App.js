@@ -1,23 +1,24 @@
-import logo from './logo.svg';
 import './App.css';
+import { useState } from  'react';
+import getWeatherDetails from "./Service/service"
 
 function App() {
+  const [city,setCity] = useState("Hosur");
+
+  const onTextChange = (e) => {
+    console.log("onTextChange", e.target.value);
+    setCity(e.target.value);
+  }
+  const onSubmit = () => {
+    console.log("onSubmit", city);
+    getWeatherDetails(city);
+  }
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="">
+      Hello guys, Enter your prefered localtion and get the weather report.
+      <input type="text" placeholder="Enter your location" onChange={onTextChange} value={city} />
+      <button onClick={onSubmit}>Get details</button>
     </div>
   );
 }

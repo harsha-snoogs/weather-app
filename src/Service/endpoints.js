@@ -1,0 +1,1 @@
+export const getCityUrl = "http://api.openweathermap.org/geo/1.0/direct"
